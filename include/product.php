@@ -13,7 +13,7 @@
    public  $supId; 
    public  $active; 
    public  $catId;
-   public  $featured;	
+   public  $featured;
 	
 	//For Cart
 	public  $purchasedAmount = 0;
@@ -21,6 +21,10 @@
     public function Product()
     {		
 
+    }
+
+    public function getPrice(){
+      return $this->price;
     }
    	
    	public function InitializeById($id, $quantity)
@@ -89,12 +93,12 @@
 	
 	public function ShowInCart()
    {
+   
    	return "<tr>
+      <td><input type='hidden' name='prodOrderID' id='prodOrderID' value='$this->id'></td>
 		<td>".$this->name."</td>
       <td>".$this->description."</td>
-		<td>R".$this->price."</td>
-      <td><a href='cart.php?Action=Delete&ProdID=$this->id'>Remove Item</a></td>
-      </tr>";
+		<td>R".$this->price."</td>";
    }
 	
 	public function GetTotalCost()

@@ -31,6 +31,10 @@ switch($ACTION){
       session_destroy();
       $TITLE = "Goodbye!";
       include_once("/logoff.php");
+   case "Checkout":
+      session_start();
+      $TITLE = "Checkout";
+      include_once("/checkout.php");
    break;
    default:
       $TITLE = "Home";

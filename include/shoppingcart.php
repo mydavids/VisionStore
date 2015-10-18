@@ -39,7 +39,13 @@
 		
 		public function RemoveProduct($tid)
 		{
-			for($i = 0;$i < count($this->products);$i++)
+         $this->totalPrice - $this->products[$tid]->getPrice();
+         unset($this->products[$tid]);
+
+         if(empty($this->products)){
+            $this->totalPrice = 0;
+         }
+			/*for($i = 0;$i < count($this->products);$i++)
 			{
 				$this->tempProduct = $this->products[$i];
 				if($this->tempProduct->GetId() == $tid)
@@ -47,7 +53,7 @@
 					unset($this->products[$i]);
 				}
 				$this->totalPrice = 0;
-			}
+			}*/
 		}
 		
 		public function ShowProducts()
@@ -60,19 +66,36 @@
 						<th></th>
 					</tr>";
 
+         $i = 0;
+
 			foreach ($this->products as $this->tempProduct) 
 			{
-				$strHTML .= $this->tempProduct->ShowInCart();
+				$strHTML .= $this->tempProduct->ShowInCart() . 
+            "<td><a href='cart.php?Action=Delete&ProdID=".$i++."'>Remove Item</a></td>
+            </tr>";
 				$this->totalPrice = $this->tempProduct->GetTotalCost() + $this->totalPrice;
 			}
 			 
          $strHTML .= "
          <tr>
             <td><b>Total Price:<b></td>
+            <td>&nbsp;</td>
             <td></td>
             <td>R".$this->totalPrice."</td>
+            <td>&nbsp;</td>
+         </tr>
+         <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
             <td></td>
-         </tr>";
+            <td><form method='post' action='index.php?Action=Checkout'>
+               <input type='submit' name='submit' value='Checkout'>
+               </form>
+            </td>
+         </tr>
+            </table>";
+
 
          echo $strHTML;
 		}

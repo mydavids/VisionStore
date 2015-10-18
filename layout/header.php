@@ -3,7 +3,7 @@
 include_once("db/dbConn.php");
 
 if($_REQUEST)
-   $ACTION = $_GET['Action'];
+   $ACTION = $_REQUEST['Action'];
 else
    $ACTION = "";
 
