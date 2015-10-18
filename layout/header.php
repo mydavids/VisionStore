@@ -23,9 +23,10 @@ if($ACTION == 'Login'){
 //$_SESSION = "";
 
 if(($ACTION == 'LoginSuccessful') || (!empty($_SESSION))){
-   $strLogInHTML = "<a href='index.php?Action=Logoff' style='float:left;line-height: 80px; width: 14.285%; height: 80px; background-color:#3399CC;font-size:20px;
+   $strSignUpHTML = "<a href='index.php?Action=Logoff' style='float:left;line-height: 80px; width: 14.285%; height: 80px; background-color:#3399CC;font-size:20px;
                   text-align:center; border:0px;font-family: Arial; '>Log Out</a>";
-   $strSignUpHTML = "";
+   $strLogInHTML = "<a href='index.php?Action=LoginSuccessful&id=0' style='float:left;line-height: 80px; width: 14.285%; height: 80px; background-color:#3399CC;font-size:20px;
+                  text-align:center; border:0px;font-family: Arial; '>Home</a>";
 }else{
    $strSignUpHTML =  "<a href='index.php?Action=Register' style='float:left;line-height: 80px; width: 14.285%; height: 80px; background-color:#3399CC;font-size:20px;
                      text-align:center; border:0px;font-family: Arial; '>Sign Up</a>";
@@ -42,11 +43,10 @@ $strHeader = "<!DOCTYPE html>
          </head>
            <header>
 		  
-           <div id='bannermainhead' style=' width: 100%; height: 280px; background: linear-gradient(#330066, #452899); '> 
+           <div id='bannermainhead' style=' width: 100%; height: 280px; background: linear-gradient(#330066, #452899); '>
 			<h1 style=' color:#ffffff; font-size:140px; text-align: center;font-family: Arial;margin-top: 0;'>VISION</h1>
 			<a href='cart.php'><img src='images/Cart-128.png' style='align=right; width:50px;height:50px;margin-top:-80px; position:relative; left:1150px;></a> 
 			<p style=' color:#ffffff; font-size:33px; text-align: center; margin-top: -80px; font-family: Arial; '></p>
-			
            </div>
 		   
 		

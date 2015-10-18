@@ -3,11 +3,14 @@
 	include_once("layout/header.php");
 	include_once("include/shoppingcart.php");
 
-	if(isset($_GET)){
+	if($_GET["id"]){
+		if($_GET["id"] == 0){
 
-		$_SESSION["UserID"] = $_GET["id"];
-		$Cart = new ShoppingCart();
-      $_SESSION["cart"] = serialize($Cart);
+		}else{
+			$_SESSION["UserID"] = $_GET["id"];
+			$Cart = new ShoppingCart();
+	      	$_SESSION["cart"] = serialize($Cart);
+ 	 	}
    }
 
 	$ID = $_SESSION["UserID"];

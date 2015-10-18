@@ -31,11 +31,12 @@ switch($ACTION){
       session_destroy();
       $TITLE = "Goodbye!";
       include_once("/logoff.php");
+      break;
    case "Checkout":
       session_start();
       $TITLE = "Checkout";
       include_once("/checkout.php");
-   break;
+      break;
    default:
       $TITLE = "Home";
       include_once("/home.php");

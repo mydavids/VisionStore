@@ -32,6 +32,13 @@ class Products {
 
       while($rowProducts = $rstProducts->fetch_assoc()){
 
+         if($rowProducts["quantity"] == 0){
+            $strQuantity = "<td colspan='2'>Out of Stock</td>"
+         }else{
+            $strQuantity = "<td><input type='number' id='quantity' name='quantity' min='1' max='". $rowProducts["quantity"]. "' value='1'></td>
+               <td><input type='submit' value='Add to Cart' class='btnAddAction'></td>"
+         }
+
          $strProductsHTML .= "
             <form method='post' action='".basename($_SERVER['PHP_SELF'])."?Action=Add&ID=".$rowProducts["Product_Id"]."'>
             <tr>
@@ -39,8 +46,7 @@ class Products {
                <td><img src='".$rowProducts["ImageLocation"]."' alt='Image'></td>
                <td>R". $rowProducts["Product_Price"]. "</td>
                <td>". $rowProducts["Description"]. "</td>
-               <td><input type='number' id='quantity' name='quantity' min='1' max='". $rowProducts["quantity"]. "' value='1'></td>
-               <td><input type='submit' value='Add to Cart' class='btnAddAction'></td>
+               $strQuantity;
             </tr>
             </form>";          
       }
