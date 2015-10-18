@@ -52,12 +52,29 @@
 		
 		public function ShowProducts()
 		{
+			$strHTML = "<table class='orderTbl'>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Price</th>
+						<th></th>
+					</tr>";
+
 			foreach ($this->products as $this->tempProduct) 
 			{
-				$this->tempProduct->ShowInCart();
+				$strHTML .= $this->tempProduct->ShowInCart();
 				$this->totalPrice = $this->tempProduct->GetTotalCost() + $this->totalPrice;
 			}
-			echo "<th>TOTAL: R".$this->totalPrice."</th><br>  ";
+			 
+         $strHTML .= "
+         <tr>
+            <td><b>Total Price:<b></td>
+            <td></td>
+            <td>R".$this->totalPrice."</td>
+            <td></td>
+         </tr>";
+
+         echo $strHTML;
 		}
 	} 
 	

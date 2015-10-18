@@ -88,13 +88,14 @@
    	}
 	
 	public function ShowInCart()
-   	{
-   		echo "<th>".$this->id."</th>  ";
-		echo "<th>".$this->name."</th>  ";
-		echo "<th>".$this->purchasedAmount."</th>  ";
-		echo "<th>R".$this->price*$this->purchasedAmount."</th>  ";
-		echo "<br>";
-   	}
+   {
+   	return "<tr>
+		<td>".$this->name."</td>
+      <td>".$this->description."</td>
+		<td>R".$this->price."</td>
+      <td><a href='cart.php?Action=Delete&ProdID=$this->id'>Remove Item</a></td>
+      </tr>";
+   }
 	
 	public function GetTotalCost()
 	{	

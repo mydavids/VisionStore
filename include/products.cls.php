@@ -11,6 +11,7 @@ class Products {
 
  	function getList($ID){
 
+      $product = new Product;
       global $db;
 
  		$strProductsHTML = "<table class='ProductsTbl'>
@@ -54,26 +55,16 @@ class Products {
       switch ($Action) {
          case 'Add':
             if(!empty($_POST['quantity'])){
-               $product = new Product;
                $product->InitializeById($_GET['ID'], $_POST['quantity']);
 
                if(!empty($_SESSION["cart"])){
                   $Cart = $_SESSION["cart"];
                   $Cart = unserialize($Cart);
                   $Cart->AddProduct($product);
-                  $Cart->ShowProducts();
                   $_SESSION["cart"] = serialize($Cart);
-                  var_dump($_SESSION);
+                  unset($product);
                   }
-                  else{
-                     //New Cart
-                     
-               }
             }
-            break;
-         
-         default:
-            echo "default";
             break;
       }
 
