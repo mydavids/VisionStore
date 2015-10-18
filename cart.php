@@ -26,10 +26,16 @@ switch ($Action) {
       $Cart->ShowProducts();
       $_SESSION["cart"] = serialize($Cart);
 		break;
+   case 'Clear':
+      unset($_SESSION["cart"]);
+      //$Cart = unserialize($Cart);
+      echo "<h1>Cart is Empty.</h1><h2>Please proceed to a category to start shopping</h2>";
+      $_SESSION["cart"] = serialize($Cart);
+      break;
    default:
-      $Cart = $_SESSION["cart"];
-      $Cart = unserialize($Cart);
-      $Cart->ShowProducts();
+         $Cart = $_SESSION["cart"];
+         $Cart = unserialize($Cart);
+         $Cart->ShowProducts(); 
       break;
 }
 

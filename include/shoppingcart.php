@@ -59,6 +59,10 @@
 		public function ShowProducts()
 		{
 			$strHTML = "<table class='orderTbl'>
+               <tr>
+                  <th colspan='3'>Shopping Cart</th>
+                  <th><a href='cart.php?Action=Clear'>Clear Cart</a></th>
+               </tr>
 					<tr>
 						<th>Name</th>
 						<th>Description</th>
