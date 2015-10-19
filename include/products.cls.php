@@ -33,10 +33,10 @@ class Products {
       while($rowProducts = $rstProducts->fetch_assoc()){
 
          if($rowProducts["quantity"] == 0){
-            $strQuantity = "<td colspan='2'>Out of Stock</td>"
+            $strQuantity = "<td colspan='2'>Out of Stock</td>";
          }else{
             $strQuantity = "<td><input type='number' id='quantity' name='quantity' min='1' max='". $rowProducts["quantity"]. "' value='1'></td>
-               <td><input type='submit' value='Add to Cart' class='btnAddAction'></td>"
+               <td><input type='submit' value='Add to Cart' class='btnAddAction'></td>";
          }
 
          $strProductsHTML .= "
